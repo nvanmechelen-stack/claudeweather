@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>What to Wear — Antwerp</title>
+  <meta name="description" content="Today's weather in Antwerp, distilled into a simple answer: what to wear." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌤️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <p class="eyebrow">Good to know before you head out</p>
+      <h1 id="city">Antwerp</h1>
+      <p id="date" class="date"></p>
+    </header>
+
+    <main>
+      <!-- Loading state -->
+      <section id="loading" class="state-card">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Fetching today's weather…</p>
+      </section>
+
+      <!-- Error state -->
+      <section id="error" class="state-card" hidden>
+        <p class="error-emoji" aria-hidden="true">⚠️</p>
+        <p id="error-message">Couldn't load the weather right now.</p>
+        <button id="retry-btn" type="button">Try again</button>
+      </section>
+
+      <!-- Content -->
+      <section id="content" hidden>
+
+        <section class="hero" id="hero">
+          <div class="hero-icon" id="hero-icon" aria-hidden="true">🌤️</div>
+          <div class="hero-temp">
+            <span id="temp">--°</span>
+          </div>
+          <p class="hero-condition" id="condition">—</p>
+          <p class="hero-feels-like" id="feels-like"></p>
+          <p class="hero-minmax" id="minmax"></p>
+        </section>
+
+        <section class="advice-banner" id="advice-banner">
+          <p id="advice-text">Checking what you should wear…</p>
+        </section>
+
+        <section class="detail-grid">
+          <article class="detail-card" id="card-rain">
+            <div class="detail-icon" id="rain-icon" aria-hidden="true">☂️</div>
+            <h2>Rain</h2>
+            <p class="detail-value" id="rain-value">—</p>
+            <p class="detail-sub" id="rain-sub"></p>
+          </article>
+
+          <article class="detail-card" id="card-wind">
+            <div class="detail-icon" id="wind-icon" aria-hidden="true">💨</div>
+            <h2>Wind</h2>
+            <p class="detail-value" id="wind-value">—</p>
+            <p class="detail-sub" id="wind-sub"></p>
+          </article>
+
+          <article class="detail-card" id="card-humidity">
+            <div class="detail-icon" id="humidity-icon" aria-hidden="true">💧</div>
+            <h2>Humidity</h2>
+            <p class="detail-value" id="humidity-value">—</p>
+            <p class="detail-sub" id="humidity-sub"></p>
+          </article>
+        </section>
+
+        <button id="refresh-btn" type="button" class="refresh-btn">
+          <span aria-hidden="true">↻</span> Refresh
+        </button>
+
+        <p class="updated-at" id="updated-at"></p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
