@@ -10,10 +10,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        if (stored === "dark" || stored === "light") {
+          document.documentElement.setAttribute("data-theme", stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div class="app">
     <header class="app-header">
+      <button
+        id="theme-toggle"
+        type="button"
+        class="theme-toggle"
+        aria-pressed="false"
+        aria-label="Switch to dark mode"
+      >
+        🌙
+      </button>
       <p class="eyebrow">Good to know before you head out</p>
       <h1 id="city">Antwerp</h1>
       <p id="date" class="date"></p>

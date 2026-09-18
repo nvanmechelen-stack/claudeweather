@@ -70,7 +70,41 @@ const els = {
   humiditySub: document.getElementById("humidity-sub"),
   cardHumidity: document.getElementById("card-humidity"),
   updatedAt: document.getElementById("updated-at"),
+  themeToggle: document.getElementById("theme-toggle"),
 };
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem("theme");
+  } catch (e) {
+    return null;
+  }
+}
+
+function systemPrefersDark() {
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  const isDark = theme === "dark";
+  els.themeToggle.textContent = isDark ? "☀️" : "🌙";
+  els.themeToggle.setAttribute("aria-pressed", String(isDark));
+  els.themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+}
+
+function initTheme() {
+  const stored = getStoredTheme();
+  applyTheme(stored === "dark" || stored === "light" ? stored : systemPrefersDark() ? "dark" : "light");
+}
+
+function toggleTheme() {
+  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try {
+    localStorage.setItem("theme", next);
+  } catch (e) {}
+}
 
 function setDateHeading() {
   const today = new Date();
@@ -231,6 +265,8 @@ async function loadWeather() {
 
 els.retryBtn.addEventListener("click", loadWeather);
 els.refreshBtn.addEventListener("click", loadWeather);
+els.themeToggle.addEventListener("click", toggleTheme);
 
+initTheme();
 setDateHeading();
 loadWeather();
