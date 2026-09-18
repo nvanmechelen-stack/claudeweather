@@ -1,25 +1,28 @@
 :root {
   color-scheme: light;
 
-  --sky-top: #6db3f2;
-  --sky-bottom: #aee1f9;
+  --primary: #4d6b3c;
+  --secondary: #8ba87e;
+  --accent: #a67b5b;
+  --accent-strong: #8d694d;
+
+  --sky-top: var(--secondary);
+  --sky-bottom: #bfcfb8;
   --card-bg: #ffffff;
-  --card-bg-soft: #f4f9fd;
-  --text-primary: #17324a;
-  --text-secondary: #4d6a82;
-  --text-muted: #8199ad;
-  --accent: #ff9d5c;
-  --accent-strong: #ff7a3d;
-  --good: #2fa876;
-  --warn: #e08a2c;
-  --alert: #e05a4e;
+  --card-bg-soft: #f4f7f0;
+  --text-primary: #1a2b14;
+  --text-secondary: #475d3e;
+  --text-muted: #69825e;
+  --good: var(--primary);
+  --warn: #c08a3f;
+  --alert: #b3503a;
   --radius-lg: 24px;
   --radius-md: 18px;
-  --shadow: 0 12px 30px -12px rgba(23, 50, 74, 0.25);
-  --border-soft: rgba(23, 50, 74, 0.25);
-  --border-soft-strong: rgba(23, 50, 74, 0.4);
+  --shadow: 0 12px 30px -12px rgba(26, 43, 20, 0.25);
+  --border-soft: var(--secondary);
+  --border-soft-strong: #78966a;
   --hover-tint: rgba(255, 255, 255, 0.35);
-  --spinner-track: #dde9f2;
+  --spinner-track: #e3ecdd;
 
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -29,6 +32,7 @@
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
+    --primary: #eaf2fa;
     --sky-top: #0f1f30;
     --sky-bottom: #16283b;
     --card-bg: #1c3146;
@@ -52,6 +56,7 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
+  --primary: #eaf2fa;
   --sky-top: #0f1f30;
   --sky-bottom: #16283b;
   --card-bg: #1c3146;
@@ -229,7 +234,7 @@ img {
   padding: 13px 14px;
   border-radius: var(--radius-md);
   background: var(--card-bg-soft);
-  color: var(--text-primary);
+  color: var(--primary);
   text-decoration: none;
   font-weight: 700;
   font-size: 0.95rem;
@@ -430,7 +435,7 @@ main {
   display: block;
   margin: 0;
   background: var(--card-bg);
-  color: var(--text-primary);
+  color: var(--primary);
   border: none;
   border-radius: 999px;
   padding: 12px 24px;
@@ -447,7 +452,7 @@ main {
   justify-content: center;
   margin: 0;
   background: transparent;
-  color: var(--text-primary);
+  color: var(--primary);
   border: 2px solid var(--border-soft);
   border-radius: 999px;
   padding: 10px 22px;
@@ -490,7 +495,7 @@ main {
 }
 
 .app-footer a {
-  color: inherit;
+  color: var(--primary);
   font-weight: 700;
 }
 
