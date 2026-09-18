@@ -71,6 +71,10 @@ const els = {
   cardHumidity: document.getElementById("card-humidity"),
   updatedAt: document.getElementById("updated-at"),
   themeToggle: document.getElementById("theme-toggle"),
+  navToggle: document.getElementById("nav-toggle"),
+  navClose: document.getElementById("nav-close"),
+  navDrawer: document.getElementById("nav-drawer"),
+  navBackdrop: document.getElementById("nav-backdrop"),
 };
 
 function getStoredTheme() {
@@ -104,6 +108,32 @@ function toggleTheme() {
   try {
     localStorage.setItem("theme", next);
   } catch (e) {}
+}
+
+function openNav() {
+  els.navBackdrop.hidden = false;
+  els.navDrawer.hidden = false;
+  requestAnimationFrame(() => {
+    els.navBackdrop.classList.add("open");
+    els.navDrawer.classList.add("open");
+  });
+  els.navToggle.setAttribute("aria-expanded", "true");
+  els.navToggle.setAttribute("aria-label", "Close menu");
+}
+
+function closeNav() {
+  els.navBackdrop.classList.remove("open");
+  els.navDrawer.classList.remove("open");
+  els.navToggle.setAttribute("aria-expanded", "false");
+  els.navToggle.setAttribute("aria-label", "Open menu");
+  window.setTimeout(() => {
+    els.navBackdrop.hidden = true;
+    els.navDrawer.hidden = true;
+  }, 250);
+}
+
+function isNavOpen() {
+  return els.navDrawer.classList.contains("open");
 }
 
 function setDateHeading() {
@@ -266,6 +296,16 @@ async function loadWeather() {
 els.retryBtn.addEventListener("click", loadWeather);
 els.refreshBtn.addEventListener("click", loadWeather);
 els.themeToggle.addEventListener("click", toggleTheme);
+
+els.navToggle.addEventListener("click", () => (isNavOpen() ? closeNav() : openNav()));
+els.navClose.addEventListener("click", closeNav);
+els.navBackdrop.addEventListener("click", closeNav);
+els.navDrawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isNavOpen()) {
+    closeNav();
+  }
+});
 
 initTheme();
 setDateHeading();

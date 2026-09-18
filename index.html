@@ -23,7 +23,48 @@
 </head>
 <body>
   <div class="app">
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <nav class="nav-drawer" id="nav-drawer" aria-label="External weather resources" hidden>
+      <div class="nav-drawer-header">
+        <span class="nav-drawer-title">More weather links</span>
+        <button id="nav-close" type="button" class="nav-close" aria-label="Close menu">✕</button>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="https://nasa.gov" target="_blank" rel="noopener">
+            <span aria-hidden="true">🛰️</span> Nasa
+          </a>
+        </li>
+        <li>
+          <a href="https://zoom.earth/maps/satellite/#view=51.218,4.433,6z" target="_blank" rel="noopener">
+            <span aria-hidden="true">🌍</span> Zoom Earth
+          </a>
+        </li>
+        <li>
+          <a href="https://eswd.eu" target="_blank" rel="noopener">
+            <span aria-hidden="true">⚠️</span> Extreem EU
+          </a>
+        </li>
+        <li>
+          <a href="https://map.blitzortung.org/#1/34.3/8" target="_blank" rel="noopener">
+            <span aria-hidden="true">⚡</span> Bliksem
+          </a>
+        </li>
+      </ul>
+    </nav>
+
     <header class="app-header">
+      <button
+        id="nav-toggle"
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+        aria-label="Open menu"
+      >
+        <span aria-hidden="true">☰</span>
+      </button>
       <button
         id="theme-toggle"
         type="button"
