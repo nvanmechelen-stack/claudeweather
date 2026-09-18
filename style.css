@@ -224,10 +224,19 @@ main {
 .detail-card.status-warn .detail-value { color: var(--warn); }
 .detail-card.status-alert .detail-value { color: var(--alert); }
 
+.action-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
 .refresh-btn,
 #retry-btn {
   display: block;
-  margin: 20px auto 0;
+  margin: 0;
   background: var(--card-bg);
   color: var(--text-primary);
   border: none;
@@ -238,6 +247,34 @@ main {
   font-weight: 700;
   box-shadow: var(--shadow);
   cursor: pointer;
+}
+
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid rgba(23, 50, 74, 0.25);
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ghost-btn:hover,
+.ghost-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(23, 50, 74, 0.4);
+}
+
+.ghost-btn:active {
+  transform: scale(0.97);
 }
 
 .refresh-btn:active,
